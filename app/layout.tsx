@@ -31,12 +31,11 @@ export default function RootLayout({
     <html lang="fr">
       <body
         className={cn(
-          `${geistSans.variable} ${geistMono.variable} antialiased h-full max-w-xl m-auto px-4`
-        )}
-      >
+          `${geistSans.variable} ${geistMono.variable} antialiased h-full w-full m-auto bg-background`
+        )} /* cz-shortcut-listen="true" */ >
         <Header />
-        <div className="flex min-h-full flex-col">
-          <div className="flex-1">{children}</div>
+        <div className="m-auto mb-12 flex flex-col">
+          {children}
         </div>
         <Footer />
       </body>
