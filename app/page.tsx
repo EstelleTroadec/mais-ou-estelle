@@ -8,6 +8,10 @@ import {
 import { getPosts } from "@/lib/posts";
 import Link from "next/link";
 import { LikeCount } from "../src/components/likesCount/LikeCount";
+import dayjs from 'dayjs';
+import 'dayjs/locale/fr';
+
+dayjs.locale('fr');
 
 export default async function Home() {
   const posts = await getPosts();
@@ -16,9 +20,9 @@ export default async function Home() {
       {posts.map((post) => (
         <Card key={post.slug}>
           <CardHeader>
-            <p className="text-xs text-muted-foreground">
-              {new Date(post.publishedAt).toLocaleDateString()}
-            </p>
+          <p className="text-sm text-muted-foreground">
+            {dayjs(post.publishedAt).format('D MMMM YYYY')}
+          </p>
             <CardTitle>{post.title}</CardTitle>
             <CardDescription>{post.description}</CardDescription>
           </CardHeader>
