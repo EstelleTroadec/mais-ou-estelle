@@ -59,4 +59,10 @@ export const getPosts = async () => {
     }
 
     return posts;
+};
+
+export const getPost = async (slug: string) => {
+    const posts = await getPosts();
+    // find the post with the given slug
+    return posts.find((post) => post.slug === slug);
 }
