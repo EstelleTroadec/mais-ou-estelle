@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import { getPosts } from "@/lib/posts";
 import Link from "next/link";
+import { LikeCount } from "../src/components/likesCount/LikeCount";
 
 export default async function Home() {
   const posts = await getPosts();
@@ -28,6 +29,7 @@ export default async function Home() {
             >
               Read more
             </Link>
+            <LikeCount slug={post.slug} /> 
           </CardFooter>
         </Card>
       ))}
