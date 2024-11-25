@@ -10,10 +10,11 @@ const PostSchema = z.object({
     mainImage: z.string(),
     // define the title lenght (for SEO purposes)  
     title: z.string().min(45).max(65),
-    description: z.string(),
+    country: z.string(),
+    // convert the date to a string
     publishedAt: z.coerce.string(),
     published: z.boolean().optional().default(false),
-});
+  });
 
 // define the Post types
 type Post = z.infer<typeof PostSchema> & {

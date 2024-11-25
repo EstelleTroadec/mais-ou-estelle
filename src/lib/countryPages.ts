@@ -1,22 +1,24 @@
-import fs from "fs/promises";
+import fs from "fs";
+import fsPromises from "fs/promises";
 import path from "path";
 // import zod to validate the data
 import z from "zod";
 import matter from "gray-matter";
+import { getPosts } from './posts';
 
 // get the path to the country pages directory (content)
 const countryPagesDirectory = path.join(process.cwd(), "content/countries");
 
 // validate the front matter data
 const countryPagesSchema = z.object({
-    mainImage: z.string(),
-    name: z.string(),
-    continent: z.string(),
-    capital: z.string(),
-    money: z.string(),
-    language: z.string(),
-    published: z.boolean().optional().default(false),
-  });
+  mainImage: z.string(),
+  name: z.string(),
+  continent: z.string(),
+  capital: z.string(),
+  money: z.string(),
+  language: z.string(),
+  published: z.boolean().optional().default(false),
+});
 
 // define the country page types
 type CountryPage = z.infer<typeof countryPagesSchema> & {
@@ -25,7 +27,7 @@ type CountryPage = z.infer<typeof countryPagesSchema> & {
   };
   
 export const getCountryPages = async () => {
-    const files = await fs.readdir(countryPagesDirectory);
+    const files = await fsPromises.readdir(countryPagesDirectory);
 
     //  Filter out non-mdx files
     const fileNames = files.filter((file) => file.endsWith(".mdx"));
@@ -35,7 +37,7 @@ export const getCountryPages = async () => {
     // for each file, read its content
     for await (const fileName of fileNames) {
     const fullPath = path.join(countryPagesDirectory, fileName);
-    const fileContent = await fs.readFile(fullPath, "utf-8");
+    const fileContent = await fsPromises.readFile(fullPath, "utf-8");
     // parse the front matter
     const frontMatter = matter(fileContent);
 
@@ -73,3 +75,22 @@ export const getCountryPage = async (slug: string) => {
     // find the country page with the given slug
     return countryPages.find((countryPage) => countryPage.slug === slug);
 }
+
+
+export const getCountryPosts = async (slug: string) => {
+    const filePath = path.join(countryPagesDirectory, `${slug}.mdx`);
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+    const fileContents = await fsPromises.readFile(filePath, 'utf-8');
+    const { data, content } = matter(fileContents);
+  
+    const posts = await getPosts();
+    const countryPosts = posts.filter(post => post.country.toLowerCase() === data.name.toLowerCase());
+  
+    return {
+      ...data,
+      content,
+      posts: countryPosts,
+    };
+  };
