@@ -40,6 +40,6 @@ export default [
   },
   // Ignore files
   {
-    ignores: ["tailwind.config.ts", "next.config.js", "*.js"],
+    ignores: ["tailwind.config.ts", "next.config.js", "*.js", "tailwindcss/no-custom-classname"],
   },
 ];
