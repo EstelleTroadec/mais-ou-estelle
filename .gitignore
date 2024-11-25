@@ -1,8 +1,10 @@
 node_modules
 
-// NEXT
+# NEXT
 .next
 
-
-// DATA
+# DATA
 .env.local
+
+# misc
+.DS_Store
