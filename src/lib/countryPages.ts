@@ -9,13 +9,14 @@ const countryPagesDirectory = path.join(process.cwd(), "content/countries");
 
 // validate the front matter data
 const countryPagesSchema = z.object({
-  mainImage: z.string(),
-  name: z.string(),
-  continent: z.string(),
-  money: z.string(),
-  language: z.string(),
-  published: z.boolean().optional().default(false),
-});
+    mainImage: z.string(),
+    name: z.string(),
+    continent: z.string(),
+    capital: z.string(),
+    money: z.string(),
+    language: z.string(),
+    published: z.boolean().optional().default(false),
+  });
 
 // define the country page types
 type CountryPage = z.infer<typeof countryPagesSchema> & {
