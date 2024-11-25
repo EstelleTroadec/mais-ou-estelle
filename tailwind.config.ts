@@ -6,12 +6,23 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+	"./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			chelsea: ['"Chelsea Market"', 'sans-serif'],
+			poppins: ['Poppins', 'sans-serif'],
+		},
+		lineHeight: {
+			'xs': '2.4rem',
+		},
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+			footerBg: 'var(--footerBg)',
+			title: 'var(--title)',
+			subtitle: 'var(--subtitle)',
+  			background: 'var(--background)',
+  			foreground: 'var(--foreground)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
