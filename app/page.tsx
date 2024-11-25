@@ -27,7 +27,7 @@ export default async function Home() {
               className="text-blue-500 hover:underline"
               href={`/posts/${post.slug}`}
             >
-              Read more
+              Voir plus →
             </Link>
             <LikeCount slug={post.slug} /> 
           </CardFooter>
