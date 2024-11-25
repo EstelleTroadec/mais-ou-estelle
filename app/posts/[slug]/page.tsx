@@ -1,3 +1,4 @@
+import { Mdx } from "@/features/mdx/Mdx";
 import { getPost } from "@/lib/posts";
 import { notFound } from "next/navigation";
 
@@ -13,7 +14,8 @@ export default async function RoutePage(props: {params: {slug: string}}) {
             <p className="text-xs text-muted-foreground"> 
               {new Date(post.publishedAt).toLocaleDateString()}
             </p>
-            <h1>{post.title}</h1>   
+            <h1>{post.title}</h1>
+            <Mdx>{post.content}</Mdx>   
         </div>
     );
 }
