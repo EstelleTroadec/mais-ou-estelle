@@ -3,8 +3,8 @@ import path from "path";
 import z from "zod";
 import matter from "gray-matter";
 
-// get the path to the posts directory (content)
-const postsDirectory = path.join(process.cwd(), "content");
+// get the path to the posts directory
+const postsDirectory = path.join(process.cwd(), "content/posts");
 
 const PostSchema = z.object({
     // define the title lenght (for SEO purposes)  
