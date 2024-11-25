@@ -4,6 +4,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
+  CardImage,
 } from "@/components/ui/card";
 import { getPosts } from "@/lib/posts";
 import Link from "next/link";
@@ -20,6 +21,7 @@ export default async function Home() {
       {posts.map((post) => (
         <Card key={post.slug}>
           <CardHeader>
+          <CardImage src={post.mainImage} alt={post.title} />
           <p className="text-sm text-muted-foreground">
             {dayjs(post.publishedAt).format('D MMMM YYYY')}
           </p>

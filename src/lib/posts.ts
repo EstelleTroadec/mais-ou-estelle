@@ -7,6 +7,7 @@ import matter from "gray-matter";
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
 const PostSchema = z.object({
+    mainImage: z.string(),
     // define the title lenght (for SEO purposes)  
     title: z.string().min(45).max(65),
     description: z.string(),
