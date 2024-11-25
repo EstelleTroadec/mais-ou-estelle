@@ -53,7 +53,8 @@ export const getPosts = async () => {
       // push the post to the posts array, with the slug and the content
       posts.push({
         ...safeData.data,
-        slug: fileName.replace(".mdx", ""),
+        // remove the prefix and the .mdx extension from the file name (to get a SEO friendly slug)
+        slug: fileName.replace(/^(0\d+-)/, "").replace(".mdx", ""),
         content: frontMatter.content,
       });
     }
