@@ -39,9 +39,14 @@ export const getPosts = async () => {
       const safeData = PostSchema.safeParse(frontMatter.data);
       // if the data is not valid, log the error and continue to the next file
       if (!safeData.success) {
-        console.error(`Error parsing in file : ${fileName} - ${safeData.error.issues
-            .map((i) => i.message)
-            .join(", ")}`);
+        console.error(`Error parsing file: ${fileName}`);
+      safeData.error.issues.forEach((issue) => {
+        console.error(`  - ${issue.path.join(" -> ")}: ${issue.message}`);
+      });
+        continue;
+      }
+      // if the post is not published and we are not in development mode, skip it
+      if (!safeData.data.published && process.env.NODE_ENV !== "development") {
         continue;
       }
 
