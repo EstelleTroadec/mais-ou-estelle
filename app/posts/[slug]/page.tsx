@@ -9,8 +9,11 @@ export default async function RoutePage(props: {params: {slug: string}}) {
     }
 
     return(
-        <div>
-            <h1>{post.title}</h1>
+        <div className="prose prose-sm lg:prose-lg">
+            <p className="text-xs text-muted-foreground"> 
+              {new Date(post.publishedAt).toLocaleDateString()}
+            </p>
+            <h1>{post.title}</h1>   
         </div>
     );
 }
