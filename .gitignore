@@ -3,8 +3,8 @@ node_modules
 # NEXT
 .next
 
-# DATA
+# LOCAL ENV FILE
 .env.local
 
-# misc
+# MISC
 .DS_Store
