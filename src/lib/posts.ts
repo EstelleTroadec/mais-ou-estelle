@@ -7,15 +7,17 @@ import matter from "gray-matter";
 const postsDirectory = path.join(process.cwd(), "content");
 
 const PostSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  publishedAt: z.coerce.string(),
+    // define the title lenght (for SEO purposes)  
+    title: z.string().min(45).max(65),
+    description: z.string(),
+    publishedAt: z.coerce.string(),
+    published: z.boolean().optional().default(false),
 });
 
 // define the Post types
 type Post = z.infer<typeof PostSchema> & {
-  slug: string;
-  content: string;
+    slug: string;
+    content: string;
 };
 
 export const getPosts = async () => {
@@ -52,5 +54,4 @@ export const getPosts = async () => {
     }
 
     return posts;
-
-    }
+}
