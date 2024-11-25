@@ -29,6 +29,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recommended.js": "link:eslint-plugin-react/configs/recommended.js",
+    "swr": "^2.2.5",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "typescript-eslint": "^8.15.0",
