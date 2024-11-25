@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,7 +14,11 @@
 
 @layer base {
   :root {
-    --background: 334 62% 100%;
+
+    --background: #fcf8f2;
+    --footerBg: #8D466E;
+    --title: #71BDC3;
+    --subtitle: #505257
     --foreground: 334 55% 1%;
     --muted: 334 35% 95%;
     --muted-foreground: 334 9% 37%;
@@ -63,4 +70,16 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.mdx-content > *:last-child {
+  margin-bottom: 0px;
+}
+
+.mdx-content > *:first-child {
+  margin-top: 0px;
+}
+
+.font-courrier {
+  font-family:'Courier New', Courier, monospace
 }
