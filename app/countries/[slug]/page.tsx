@@ -1,6 +1,5 @@
 import { Mdx } from "@/features/mdx/Mdx";
-import { getPosts } from "@/lib/posts";
-import { getCountryPage } from "@/lib/countryPages";
+import { getCountryPage, getCountryPosts } from "@/lib/countryPages";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -43,7 +42,7 @@ export default async function CountryPage(props: { params: { slug: string } }) {
     notFound();
   }
 
-  const posts = await getPosts();
+  const countryPosts = await getCountryPosts(props.params.slug);
 
   return (
     <div className="m-auto w-3/4">
@@ -77,7 +76,7 @@ export default async function CountryPage(props: { params: { slug: string } }) {
       </div>
       <div className="m-auto space-y-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {posts.map((post) => (
+          {countryPosts?.posts?.map((post) => (
               <Card key={post.slug} className="flex flex-col gap-2">
                 <CardHeader>
                     <CardImage src={post.mainImage} alt={post.title} />
