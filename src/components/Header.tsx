@@ -60,6 +60,9 @@ export const Header = () => {
                                         <h4 className="text-lg uppercase ">Amérique du Nord</h4>
                                         <div className="mt-2">
                                             <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                                <Link href="/countries/etats-unis">
+                                                    <li>Etats-Unis</li>
+                                                </Link>
                                                 <Link href="/countries/mexique">
                                                     <li>Mexique</li>
                                                 </Link>
