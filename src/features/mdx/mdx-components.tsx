@@ -1,6 +1,6 @@
 import { MdxYouTube } from "./MdxYoutube";
-import { MdxTitleColor } from "./MdxColor";
+import { MdxTitle } from "./MdxStyle";
 export const MDX_COMPONENTS = {
   YouTube: MdxYouTube,
-  h2: MdxTitleColor,
+  h2: MdxTitle,
 }; 
