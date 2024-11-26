@@ -47,7 +47,10 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
         </p>
         <ViewCount slug={(await props.params).slug} />
       </div>
-      <h1>{post.title}</h1>
+      <h1 className="font-poppins">{post.title}</h1>
+      <div className="flex justify-center">
+        <img src={post.mainImage} alt={post.title} className="w-full" />
+      </div>
       <Mdx>{post.content}</Mdx>
       <LikeCount slug={(await props.params).slug} />
     </div>)
