@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import "../../styles/globals.css";
-import { AiOutlineDown } from 'react-icons/ai';
+import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 
 export const Header = () => {
     const [isMounted, setIsMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -28,12 +29,10 @@ export const Header = () => {
                 menu.classList.add('hidden');
             };
 
-            // add event listeners to show and hide the menu
             destinationItem.addEventListener('mouseenter', showMenu);
             destinationItem.addEventListener('mouseleave', hideMenu);
             destinationItem.addEventListener('click', showMenu);
 
-            // clean up event listeners when the component is unmounted
             return () => {
                 destinationItem.removeEventListener('mouseenter', showMenu);
                 destinationItem.removeEventListener('mouseleave', hideMenu);
@@ -55,15 +54,19 @@ export const Header = () => {
         return () => {
           window.removeEventListener('scroll', handleScroll);
         };
-      }, []);
+    }, []);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
 
     return (
         <header className={`fixed top-0 w-full font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'}`}>
-            <div className="container relative m-auto flex w-10/12">
+            <div className="container relative m-auto flex w-10/12 items-center justify-between">
                 <Link href="/" className="flex">
                     <img className="my-auto mr-2 w-20 pb-2" src="/logo.png" alt="logo" />
                 </Link>
-                <nav className="ml-10 mt-6 flex space-x-8">
+                <nav className="ml-10 mt-6 hidden space-x-8 md:flex">
                     <ul className="flex uppercase text-footerBg">
                         <li
                             id="destination-item"
@@ -136,11 +139,30 @@ export const Header = () => {
                                 </ul>
                             </div>
                         </li>
-                        {/* To add soon */}
-                        {/* <li className="mx-4 flex">Préparatifs <AiOutlineDown className="m-1" /></li> */}
                     </ul>
                 </nav>
+                <div className="flex items-center md:hidden">
+                    <button onClick={toggleMenu} className="text-footerBg focus:outline-none">
+                        {menuOpen ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
+                    </button>
+                </div>
             </div>
+            {menuOpen && (
+                <nav className="bg-footerBg text-background md:hidden">
+                    <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                        <li className="cursor-pointer">
+                            <Link href="/countries/etats-unis" onClick={toggleMenu}>Etats-Unis</Link>
+                        </li>
+                        <li className="cursor-pointer">
+                            <Link href="/countries/mexique" onClick={toggleMenu}>Mexique</Link>
+                        </li>
+                        <li className="cursor-pointer">
+                            <Link href="/countries/polynesie-francaise" onClick={toggleMenu}>Polynésie Française</Link>
+                        </li>
+                        {/* Ajoutez d'autres liens ici */}
+                    </ul>
+                </nav>
+            )}
         </header>
     );
 };
