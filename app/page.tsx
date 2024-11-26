@@ -16,13 +16,16 @@ dayjs.locale('fr');
 export default async function Home() {
   const posts = await getPosts();
 
-  // Trier les posts du plus récent au plus ancien
+  // Sort posts from most recent to oldest
   posts.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+  // Limit the number of posts to 6
+  const visiblePosts = posts.slice(0, 6);
 
   return (
     <div className="m-auto w-3/4 space-y-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {posts.map((post) => (
+        {visiblePosts.map((post) => (
           <Card key={post.slug} className="flex flex-col gap-2">
             <CardHeader>
               <CardImage src={post.mainImage} alt={post.title} />
