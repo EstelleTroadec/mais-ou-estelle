@@ -71,10 +71,10 @@ export const Header = () => {
     };
 
     return (
-        <header className={`fixed top-4 w-full font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'}`}>
+        <header className={`fixed w-full pt-1.5 font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'}`}>
             <div className="container relative m-auto flex w-10/12 items-center justify-between md:items-start md:justify-start">
                 <Link href="/" className="flex">
-                    <img className="my-auto mr-2 w-20 pb-2" src="/logo.png" alt="logo" />
+                    <img className="my-auto mr-2 w-20 pb-1.5" src="/logo.png" alt="logo" />
                 </Link>
                 <nav className="ml-10 mt-6 hidden space-x-8 md:flex">
                     <ul className="flex uppercase text-footerBg">
