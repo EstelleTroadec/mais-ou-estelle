@@ -41,18 +41,6 @@ const CardTitle = React.forwardRef<
 ))
 CardTitle.displayName = "CardTitle"
 
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props}
-  />
-))
-CardDescription.displayName = "CardDescription"
-
 const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -85,4 +73,4 @@ const CardImage = React.forwardRef<
 ));
 CardImage.displayName = "CardImage";
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent, CardImage }
+export { Card, CardHeader, CardFooter, CardTitle, CardContent, CardImage }
