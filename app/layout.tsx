@@ -18,8 +18,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Mais Où Estelle ? — Blog",
-  description: "Idées de voyages",
+  title: "Mais où Est-elle ?",
+  description: "Blog de voyages",
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={cn(
           `${geistSans.variable} ${geistMono.variable} antialiased h-full w-full m-auto bg-background`
-        )} /* cz-shortcut-listen="true" */ >
+        )} >
         <Header />
         <div className="m-auto mb-12 flex flex-col">
           {children}
