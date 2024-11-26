@@ -19,7 +19,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Mais où Est-elle ?",
-  description: "Blog de voyages",
+  description: "Blog Voyages",
 };
 
 export default function RootLayout({
@@ -29,6 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="icon" href="./app/favicon.ico" />
+      </head>
       <body
         className={cn(
           `${geistSans.variable} ${geistMono.variable} antialiased h-full w-full m-auto bg-background`
