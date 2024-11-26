@@ -19,9 +19,9 @@ dayjs.locale('fr');
 export const dynamic = "force-static";
 
 export const generateMetadata = async (props: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> => {
-  const countryPage = await getCountryPage(props.params.slug);
+  const countryPage = await getCountryPage((await props.params).slug);
 
   if (!countryPage) {
     return {
@@ -35,14 +35,14 @@ export const generateMetadata = async (props: {
   };
 };
 
-export default async function CountryPage(props: { params: { slug: string } }) {
-  const countryPage = await getCountryPage(props.params.slug);
+export default async function CountryPage(props: { params: Promise<{ slug: string }> }) {
+  const countryPage = await getCountryPage((await props.params).slug);
 
   if (!countryPage) {
     notFound();
   }
 
-  const countryPosts = await getCountryPosts(props.params.slug);
+  const countryPosts = await getCountryPosts((await props.params).slug);
 
   return (
     <div className="m-auto w-3/4">
