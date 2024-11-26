@@ -8,8 +8,8 @@ import 'dayjs/locale/fr';
 
 dayjs.locale('fr');
 
-export default async function PostPage(props: {params: {slug: string}}) {
-    const post = await getPost(props.params.slug);
+export default async function PostPage(props: {params: Promise<{slug: string}>}) {
+    const post = await getPost((await props.params).slug);
 
     if (!post) {
         notFound();
