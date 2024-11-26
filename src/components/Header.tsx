@@ -42,27 +42,27 @@ export const Header = () => {
     }, [isMounted]);
 
     return (
-        <header className="relative w-full bg-background px-3 py-2">
+        <header className="relative w-full bg-background px-3 py-2 font-chelsea">
             <div className="container relative m-auto flex w-10/12">
                 <Link href="/" className="flex">
                     <img className="my-auto mr-2 w-20 pb-2" src="/logo.png" alt="logo" />
                 </Link>
                 <nav className="ml-10 mt-6 flex space-x-8">
-                    <ul className="flex font-semibold uppercase text-footerBg">
+                    <ul className="flex uppercase text-footerBg">
                         <li
                             id="destination-item"
                             className="group relative mx-4 flex cursor-pointer"
                         >
                             Destinations <AiOutlineDown className="m-1" />
-                            <div id="menu" className="absolute left-[-17.125rem] top-full z-50 hidden w-[90rem] bg-footerBg px-8 uppercase text-background">
-                                <ul className="w-3/4 p-8">
+                            <div id="menu" className="absolute left-[-17.125rem] top-full z-50 hidden w-[90rem] bg-footerBg px-8 font-semibold uppercase text-background">
+                                <ul className="grid grid-cols-2 gap-x-8 gap-y-4 p-8">
                                     <li className="px-4 py-2">
-                                        <h4 className="text-lg uppercase">Amérique du Nord</h4>
+                                        <h4 className="text-lg uppercase ">Amérique du Nord</h4>
                                         <div className="mt-2">
-                                            <ul className="inline-flex space-x-4 text-sm">
-                                                <li>Canada</li>
-                                                <li>Etats-Unis</li>
-                                                <li>Méxique</li>
+                                            <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                                <Link href="/countries/mexique">
+                                                    <li>Mexique</li>
+                                                </Link>
                                             </ul>
                                         </div>
                                         <hr className="my-2" />
@@ -70,9 +70,8 @@ export const Header = () => {
                                     <li className="px-4 py-2">
                                         <h4 className="text-lg uppercase">Amérique Centrale</h4>
                                         <div className="mt-2">
-                                            <ul className="inline-flex space-x-4 text-sm">
-                                                <li>Costa Rica</li>
-                                                <li>Guatemala</li>
+                                            <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                                             </ul>
                                         </div>
                                         <hr className="my-2" />
@@ -80,9 +79,37 @@ export const Header = () => {
                                     <li className="px-4 py-2">
                                         <h4 className="text-lg uppercase">Amérique du Sud</h4>
                                         <div className="mt-2">
-                                            <ul className="inline-flex space-x-4 text-sm">
-                                                <li>Colombie</li>
-                                                <li>Brésil</li>
+                                            <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                                            </ul>
+                                        </div>
+                                        <hr className="my-2" />
+                                    </li>
+                                    <li className="px-4 py-2">
+                                        <h4 className="text-lg uppercase">Asie</h4>
+                                        <div className="mt-2">
+                                            <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                                            </ul>
+                                        </div>
+                                        <hr className="my-2" />
+                                    </li>
+                                    <li className="px-4 py-2">
+                                        <h4 className="text-lg uppercase">Europe</h4>
+                                        <div className="mt-2">
+                                            <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                                            </ul>
+                                        </div>
+                                        <hr className="my-2" />
+                                    </li>
+                                    <li className="px-4 py-2">
+                                        <h4 className="text-lg uppercase">Océanie</h4>
+                                        <div className="mt-2">
+                                            <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                                <Link href="/countries/polynesie-francaise">
+                                                    <li>Polynésie Française</li>
+                                                </Link>
                                             </ul>
                                         </div>
                                         <hr className="my-2" />
