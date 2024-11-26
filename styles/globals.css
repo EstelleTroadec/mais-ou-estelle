@@ -83,3 +83,7 @@
 .font-courrier {
   font-family:'Courier New', Courier, monospace
 }
+
+.header-scroll {
+  background-color: var(--background);
+}

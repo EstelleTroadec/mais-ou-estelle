@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 
 export const Header = () => {
     const [isMounted, setIsMounted] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -41,8 +42,23 @@ export const Header = () => {
         }
     }, [isMounted]);
 
+    useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY > 50) {
+            setScrolled(true);
+          } else {
+            setScrolled(false);
+          }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
     return (
-        <header className="relative w-full bg-background px-3 py-2 font-chelsea">
+        <header className={`fixed top-0 w-full font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'}`}>
             <div className="container relative m-auto flex w-10/12">
                 <Link href="/" className="flex">
                     <img className="my-auto mr-2 w-20 pb-2" src="/logo.png" alt="logo" />
