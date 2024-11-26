@@ -91,7 +91,7 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
                     </div>
                   </div>
                   <Link href={`/posts/${post.slug}`}>
-                    <CardTitle>
+                    <CardTitle className="text-footerBg">
                       {post.title}
                     </CardTitle>
                   </Link>

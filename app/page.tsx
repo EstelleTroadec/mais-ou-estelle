@@ -3,7 +3,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-  CardImage,
+  CardImage
 } from "@/components/ui/card";
 import { getPosts } from "@/lib/posts";
 import Link from "next/link";
@@ -46,4 +46,4 @@ export default async function Home() {
       </div>
     </div>
   );
-}
+};
