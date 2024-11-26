@@ -45,7 +45,7 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
   const countryPosts = await getCountryPosts((await props.params).slug);
 
   return (
-    <div className="m-auto w-3/4">
+    <div className="mx-auto mt-24 w-3/4">
       <h1 className="my-40 text-center font-poppins text-[4rem] font-semibold uppercase">{countryPage.name}</h1>
       <div className="mb-20 mt-8 flex flex-col lg:flex-row">
         <div className="mt-6 lg:w-1/3">
