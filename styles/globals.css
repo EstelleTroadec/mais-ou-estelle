@@ -87,3 +87,10 @@
 .header-scroll {
   background-color: var(--background);
 }
+
+.bg-homePage {
+  background-image: url('/images/homePageImage.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
