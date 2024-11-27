@@ -20,6 +20,7 @@
     --title: #71BDC3;
     --subtitle: #505257;
     --secondary-bg: #FCE9CE;
+    --secondary-bg-transparent: rgba(252, 233, 206, 0.65);
     --secondary-title: #F193A2;
     --foreground: 334 55% 1%;
     --muted: 334 35% 95%;

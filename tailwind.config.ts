@@ -21,9 +21,11 @@ const config: Config = {
 			footerBg: 'var(--footer-bg)',
 			title: 'var(--title)',
 			subtitle: 'var(--subtitle)',
+			secondaryTitle: 'var(--secondary-title)',
   			background: 'var(--background)',
   			foreground: 'var(--foreground)',
 			secondaryBg: 'var(--secondary-bg)',
+			secondaryBgTransparent: 'var(--secondary-bg-transparent)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
