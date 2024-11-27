@@ -26,8 +26,8 @@ export default async function Home() {
   return (
     <div className="flex flex-col">
       <div className="bg-homePage h-[40rem] w-full" />
-      <div className="m-auto w-3/4 space-y-4">
-        <h1 className="ml-3 mt-12 font-poppins text-4xl font-semibold text-title">Mes derniers articles</h1>
+      <div className="mx-2 space-y-4 md:w-3/4">
+        <h1 className="ml-1 mt-12 font-poppins text-xl font-semibold text-title md:ml-3 md:text-4xl">Mes derniers articles</h1>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {visiblePosts.map((post) => (
             <Card key={post.slug} className="flex flex-col gap-2">
@@ -44,7 +44,7 @@ export default async function Home() {
                   </div>
                 </div>
                 <Link href={`/posts/${post.slug}`}>
-                  <CardTitle className="text-footerBg">
+                  <CardTitle className="text-xl text-footerBg md:text-4xl">
                     {post.title}
                   </CardTitle>
                 </Link>
