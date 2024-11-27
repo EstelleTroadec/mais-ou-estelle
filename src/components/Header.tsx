@@ -23,11 +23,11 @@ export const Header = () => {
         const preparatifsItem = document.getElementById('preparatifs-item');
 
         if (destinationMenu && destinationItem && preparatifsMenu && preparatifsItem) {
-            const showMenu = (menu) => {
+            const showMenu = (menu: HTMLElement) => {
                 menu.classList.remove('hidden');
             };
 
-            const hideMenu = (menu) => {
+            const hideMenu = (menu: HTMLElement) => {
                 menu.classList.add('hidden');
             };
 
