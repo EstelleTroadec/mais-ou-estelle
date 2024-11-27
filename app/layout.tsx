@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
-        {/* <link rel="icon" href="./app/favicon.ico" /> */}
+        <link rel="icon" href="/app/favicon.ico" />
       </head>
       <body
         className={cn(
