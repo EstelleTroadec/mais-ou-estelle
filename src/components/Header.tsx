@@ -9,6 +9,8 @@ export const Header = () => {
     const [isMounted, setIsMounted] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [destinationMenuVisible, setDestinationMenuVisible] = useState(false);
+    const [preparatifsMenuVisible, setPreparatifsMenuVisible] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
@@ -17,36 +19,37 @@ export const Header = () => {
     useEffect(() => {
         if (!isMounted) return;
 
-        const destinationMenu = document.getElementById('destination-menu');
         const destinationItem = document.getElementById('destination-item');
-        const preparatifsMenu = document.getElementById('preparatifs-menu');
+        const destinationMenu = document.getElementById('destination-menu');
         const preparatifsItem = document.getElementById('preparatifs-item');
+        const preparatifsMenu = document.getElementById('preparatifs-menu');
 
-        if (destinationMenu && destinationItem && preparatifsMenu && preparatifsItem) {
-            const showMenu = (menu: HTMLElement) => {
-                menu.classList.remove('hidden');
-            };
+        if (destinationItem && destinationMenu && preparatifsItem && preparatifsMenu) {
+            const showDestinationMenu = () => setDestinationMenuVisible(true);
+            const hideDestinationMenu = () => setDestinationMenuVisible(false);
+            const showPreparatifsMenu = () => setPreparatifsMenuVisible(true);
+            const hidePreparatifsMenu = () => setPreparatifsMenuVisible(false);
 
-            const hideMenu = (menu: HTMLElement) => {
-                menu.classList.add('hidden');
-            };
+            destinationItem.addEventListener('mouseenter', showDestinationMenu);
+            destinationItem.addEventListener('mouseleave', hideDestinationMenu);
+            destinationMenu.addEventListener('mouseenter', showDestinationMenu);
+            destinationMenu.addEventListener('mouseleave', hideDestinationMenu);
 
-            destinationItem.addEventListener('mouseenter', () => showMenu(destinationMenu));
-            destinationItem.addEventListener('mouseleave', () => hideMenu(destinationMenu));
-            destinationItem.addEventListener('click', () => showMenu(destinationMenu));
-
-            preparatifsItem.addEventListener('mouseenter', () => showMenu(preparatifsMenu));
-            preparatifsItem.addEventListener('mouseleave', () => hideMenu(preparatifsMenu));
-            preparatifsItem.addEventListener('click', () => showMenu(preparatifsMenu));
+            preparatifsItem.addEventListener('mouseenter', showPreparatifsMenu);
+            preparatifsItem.addEventListener('mouseleave', hidePreparatifsMenu);
+            preparatifsMenu.addEventListener('mouseenter', showPreparatifsMenu);
+            preparatifsMenu.addEventListener('mouseleave', hidePreparatifsMenu);
 
             return () => {
-                destinationItem.removeEventListener('mouseenter', () => showMenu(destinationMenu));
-                destinationItem.removeEventListener('mouseleave', () => hideMenu(destinationMenu));
-                destinationItem.removeEventListener('click', () => showMenu(destinationMenu));
+                destinationItem.removeEventListener('mouseenter', showDestinationMenu);
+                destinationItem.removeEventListener('mouseleave', hideDestinationMenu);
+                destinationMenu.removeEventListener('mouseenter', showDestinationMenu);
+                destinationMenu.removeEventListener('mouseleave', hideDestinationMenu);
 
-                preparatifsItem.removeEventListener('mouseenter', () => showMenu(preparatifsMenu));
-                preparatifsItem.removeEventListener('mouseleave', () => hideMenu(preparatifsMenu));
-                preparatifsItem.removeEventListener('click', () => showMenu(preparatifsMenu));
+                preparatifsItem.removeEventListener('mouseenter', showPreparatifsMenu);
+                preparatifsItem.removeEventListener('mouseleave', hidePreparatifsMenu);
+                preparatifsMenu.removeEventListener('mouseenter', showPreparatifsMenu);
+                preparatifsMenu.removeEventListener('mouseleave', hidePreparatifsMenu);
             };
         }
     }, [isMounted]);
@@ -74,13 +77,13 @@ export const Header = () => {
         <>
             <li
                 id="destination-item"
-                className="group relative mx-4 flex cursor-pointer"
+                className="group relative mx-4 flex h-full cursor-pointer items-center"
             >
                 Destinations <AiOutlineDown className="m-1" />
             </li>
             <li
                 id="preparatifs-item"
-                className="group relative mx-4 flex cursor-pointer"
+                className="group relative mx-4 flex h-full cursor-pointer items-center"
             >
                 Préparatifs <AiOutlineDown className="m-1" />
             </li>
@@ -89,7 +92,10 @@ export const Header = () => {
 
     const renderDropdownMenus = () => (
         <>
-            <div id="destination-menu" className="absolute left-0 top-full z-50 hidden w-screen bg-footerBg px-8 font-semibold uppercase text-background">
+            <div
+                id="destination-menu"
+                className={`absolute left-0 top-full z-50 ${destinationMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}
+            >
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-4 p-8">
                     <li className="px-4 py-2">
                         <h4 className="text-lg uppercase ">Amérique du Nord</h4>
@@ -154,7 +160,7 @@ export const Header = () => {
                     </li>
                 </ul>
             </div>
-            <div id="preparatifs-menu" className="absolute left-0 top-full z-50 hidden w-screen bg-footerBg px-8 font-semibold uppercase text-background">
+            <div id="preparatifs-menu" className={`absolute left-0 top-full z-50 ${preparatifsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}>
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-4 p-8">
                     <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                 </ul>
@@ -163,13 +169,13 @@ export const Header = () => {
     );
 
     return (
-        <header className={`fixed top-0 w-full font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'}`}>
-            <div className="container relative m-auto flex w-10/12 items-center justify-between md:items-start md:justify-start">
-                <Link href="/" className="flex">
-                    <img className="my-auto mr-2 w-20 pb-2" src="/logo.png" alt="logo" />
+        <header className={`fixed mb-1 h-24 w-full pt-0.5 font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'}`}>
+            <div className="container relative m-auto flex h-full w-10/12 items-center justify-between md:items-start md:justify-start">
+                <Link href="/" className="flex h-full">
+                    <img className="my-auto mr-2 w-20" src="/logo.png" alt="logo" />
                 </Link>
-                <nav className="ml-10 mt-6 hidden space-x-8 md:flex">
-                    <ul className="flex uppercase text-footerBg">
+                <nav className="my-auto ml-10 hidden h-full space-x-8 md:flex">
+                    <ul className="flex h-full items-center space-x-8 uppercase text-footerBg">
                         {renderNavItems()}
                     </ul>
                 </nav>
