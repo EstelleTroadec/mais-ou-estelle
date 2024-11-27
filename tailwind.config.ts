@@ -18,11 +18,12 @@ const config: Config = {
 			'xs': '2.4rem',
 		},
   		colors: {
-			footerBg: 'var(--footerBg)',
+			footerBg: 'var(--footer-bg)',
 			title: 'var(--title)',
 			subtitle: 'var(--subtitle)',
   			background: 'var(--background)',
   			foreground: 'var(--foreground)',
+			secondaryBg: 'var(--secondary-bg)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'

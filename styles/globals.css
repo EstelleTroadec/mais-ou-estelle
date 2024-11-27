@@ -16,9 +16,11 @@
   :root {
 
     --background: #fcf8f2;
-    --footerBg: #8D466E;
+    --footer-bg: #8D466E;
     --title: #71BDC3;
-    --subtitle: #505257
+    --subtitle: #505257;
+    --secondary-bg: #FCE9CE;
+    --secondary-title: #F193A2;
     --foreground: 334 55% 1%;
     --muted: 334 35% 95%;
     --muted-foreground: 334 9% 37%;
