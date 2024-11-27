@@ -25,7 +25,16 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col">
-      <div className="bg-homePage h-[40rem] w-full" />
+      <div className="bg-homePage flex h-[40rem] w-full items-center">
+        <div className="m-auto mb-0 flex h-auto w-full bg-secondaryBgTransparent font-chelsea">
+          <div className="m-auto flex w-72 items-center">
+            <h1 className="ml-6 w-[70%] text-left text-[3rem] font-semibold leading-[3rem] text-footerBg">
+                Mais où Est(-)elle
+            </h1>
+            <p className="text-[7rem] text-footerBg">?</p>
+          </div>
+        </div>
+      </div>
       <div className="mx-2 space-y-4 md:w-3/4">
         <h1 className="ml-1 mt-12 font-poppins text-xl font-semibold text-title md:ml-3 md:text-4xl">Mes derniers articles</h1>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
