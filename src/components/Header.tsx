@@ -13,19 +13,18 @@ export const Header = () => {
     // State to track if the component is mounted
     const [isMounted, setIsMounted] = useState(false);
     // State to track if the destination menu is visible
-    const [destinationMenuVisible, setDestinationMenuVisible] = useState(false);
+    const [destinationsMenuVisible, setDestinationsMenuVisible] = useState(false);
     // State to track if the preparatifs menu is visible
-    const [preparatifsMenuVisible, setPreparatifsMenuVisible] = useState(false);
+    const [preparationsMenuVisible, setPreparationsMenuVisible] = useState(false);
 
 
     //? STATES FOR MOBILE NAVIGATION ONLY
     // State to track if the menu is open
     const [menuOpen, setMenuOpen] = useState(false);
     // State to track if the mobile destination menu is visible
-    const [mobileDestinationMenuVisible, setMobileDestinationMenuVisible] = useState(false);
+    const [mobileNavItemMenuVisible, setMobileNavItemMenuVisible] = useState(false);
     // State to track which continent's countries are visible
     const [visibleContinent, setVisibleContinent] = useState<string | null>(null);
-
 
     // Effect to handle scroll events and set the scrolled state
     useEffect(() => {
@@ -54,37 +53,37 @@ export const Header = () => {
     useEffect(() => {
         if (!isMounted) return;
 
-        const destinationItem = document.getElementById('destination-item');
-        const destinationMenu = document.getElementById('destination-menu');
-        const preparatifsItem = document.getElementById('preparatifs-item');
-        const preparatifsMenu = document.getElementById('preparatifs-menu');
+        const destinationsItem = document.getElementById('destinations-item');
+        const destinationsMenu = document.getElementById('destinations-menu');
+        const preparationsItem = document.getElementById('preparations-item');
+        const preparationsMenu = document.getElementById('preparations-menu');
 
-        if (destinationItem && destinationMenu && preparatifsItem && preparatifsMenu) {
-            const showDestinationMenu = () => setDestinationMenuVisible(true);
-            const hideDestinationMenu = () => setDestinationMenuVisible(false);
-            const showPreparatifsMenu = () => setPreparatifsMenuVisible(true);
-            const hidePreparatifsMenu = () => setPreparatifsMenuVisible(false);
+        if (destinationsItem && destinationsMenu && preparationsItem && preparationsMenu) {
+            const showDestinationsMenu = () => setDestinationsMenuVisible(true);
+            const hideDestinationsMenu = () => setDestinationsMenuVisible(false);
+            const showPreparationsMenu = () => setPreparationsMenuVisible(true);
+            const hidePreparationsMenu = () => setPreparationsMenuVisible(false);
 
-            destinationItem.addEventListener('mouseenter', showDestinationMenu);
-            destinationItem.addEventListener('mouseleave', hideDestinationMenu);
-            destinationMenu.addEventListener('mouseenter', showDestinationMenu);
-            destinationMenu.addEventListener('mouseleave', hideDestinationMenu);
+            destinationsItem.addEventListener('mouseenter', showDestinationsMenu);
+            destinationsItem.addEventListener('mouseleave', hideDestinationsMenu);
+            destinationsMenu.addEventListener('mouseenter', showDestinationsMenu);
+            destinationsMenu.addEventListener('mouseleave', hideDestinationsMenu);
 
-            preparatifsItem.addEventListener('mouseenter', showPreparatifsMenu);
-            preparatifsItem.addEventListener('mouseleave', hidePreparatifsMenu);
-            preparatifsMenu.addEventListener('mouseenter', showPreparatifsMenu);
-            preparatifsMenu.addEventListener('mouseleave', hidePreparatifsMenu);
+            preparationsItem.addEventListener('mouseenter', showPreparationsMenu);
+            preparationsItem.addEventListener('mouseleave', hidePreparationsMenu);
+            preparationsMenu.addEventListener('mouseenter', showPreparationsMenu);
+            preparationsMenu.addEventListener('mouseleave', hidePreparationsMenu);
 
             return () => {
-                destinationItem.removeEventListener('mouseenter', showDestinationMenu);
-                destinationItem.removeEventListener('mouseleave', hideDestinationMenu);
-                destinationMenu.removeEventListener('mouseenter', showDestinationMenu);
-                destinationMenu.removeEventListener('mouseleave', hideDestinationMenu);
+                destinationsItem.removeEventListener('mouseenter', showDestinationsMenu);
+                destinationsItem.removeEventListener('mouseleave', hideDestinationsMenu);
+                destinationsMenu.removeEventListener('mouseenter', showDestinationsMenu);
+                destinationsMenu.removeEventListener('mouseleave', hideDestinationsMenu);
 
-                preparatifsItem.removeEventListener('mouseenter', showPreparatifsMenu);
-                preparatifsItem.removeEventListener('mouseleave', hidePreparatifsMenu);
-                preparatifsMenu.removeEventListener('mouseenter', showPreparatifsMenu);
-                preparatifsMenu.removeEventListener('mouseleave', hidePreparatifsMenu);
+                preparationsItem.removeEventListener('mouseenter', showPreparationsMenu);
+                preparationsItem.removeEventListener('mouseleave', hidePreparationsMenu);
+                preparationsMenu.removeEventListener('mouseenter', showPreparationsMenu);
+                preparationsMenu.removeEventListener('mouseleave', hidePreparationsMenu);
             };
         }
     }, [isMounted]);
@@ -94,11 +93,11 @@ export const Header = () => {
     // Function to toggle the menu open/close state
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-        setMobileDestinationMenuVisible(false);
+        setMobileNavItemMenuVisible(false);
     };
 
     const toggleMobileContinents = () => {
-        setMobileDestinationMenuVisible(!mobileDestinationMenuVisible);
+        setMobileNavItemMenuVisible(!mobileNavItemMenuVisible);
     }
 
     const toggleContinent = (continent: string) => {
@@ -113,17 +112,17 @@ export const Header = () => {
     const renderNavItems = () => (
         <>
             <li
-                id="destination-item"
+                id="destinations-item"
                 className="group relative mx-4 flex h-full cursor-pointer items-center"
             >
                 Destinations <AiOutlineDown className="m-1" />
             </li>
-{/*             <li
-                id="preparatifs-item"
+            <li
+                id="preparations-item"
                 className="group relative mx-4 flex h-full cursor-pointer items-center"
             >
                 Préparatifs <AiOutlineDown className="m-1" />
-            </li> */}
+            </li>
         </>
     );
 
@@ -131,8 +130,8 @@ export const Header = () => {
     const renderDropdownMenus = () => (
         <>
             <div
-                id="destination-menu"
-                className={`absolute left-0 top-full z-50 ${destinationMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}
+                id="destinations-menu"
+                className={`absolute left-0 top-full z-50 ${destinationsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}
             >
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-4 p-8">
                     <li className="px-4 py-2">
@@ -198,15 +197,15 @@ export const Header = () => {
                     </li>
                 </ul>
             </div>
-{/*             <div id="preparatifs-menu" className={`absolute left-0 top-full z-50 ${preparatifsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}>
+            <div id="preparations-menu" className={`absolute left-0 top-full z-50 ${preparationsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}>
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-4 p-8">
                     <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                 </ul>
-            </div> */}
+            </div>
         </>
     );
 
- const renderMobileDestinationMenu = () => (
+ const renderMobileNavItemMenu = () => (
     <ul className="flex flex-col space-y-4 pl-8 text-left uppercase">
         <li className="font-semibold" onClick={() => toggleContinent('north-america')}>
             Amérique du Nord
@@ -289,7 +288,7 @@ export const Header = () => {
                         <li className="flex cursor-pointer flex-row" onClick={toggleMobileContinents}>
                             Destinations <AiOutlineDown className="m-1" />
                         </li>
-                        {mobileDestinationMenuVisible && renderMobileDestinationMenu()}
+                        {mobileNavItemMenuVisible && renderMobileNavItemMenu()}
                     </ul>
                 </nav>
             )}
