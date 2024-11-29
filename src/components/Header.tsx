@@ -6,16 +6,47 @@ import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
 
 export const Header = () => {
-    const [isMounted, setIsMounted] = useState(false);
+    // State to track if the page is scrolled
     const [scrolled, setScrolled] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
+
+    //? STATES FOR DESKTOP NAVIGATION ONLY
+    // State to track if the component is mounted
+    const [isMounted, setIsMounted] = useState(false);
+    // State to track if the destination menu is visible
     const [destinationMenuVisible, setDestinationMenuVisible] = useState(false);
+    // State to track if the preparatifs menu is visible
     const [preparatifsMenuVisible, setPreparatifsMenuVisible] = useState(false);
 
+
+    //? STATES FOR MOBILE NAVIGATION ONLY
+    // State to track if the menu is open
+    const [menuOpen, setMenuOpen] = useState(false);
+
+
+    // Effect to handle scroll events and set the scrolled state
+    useEffect(() => {
+        const handleScroll = () => {
+          if (window.scrollY > 50) {
+            setScrolled(true);
+          } else {
+            setScrolled(false);
+          }
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+
+    //? EFFECTS FOR DESKTOP NAVIGATION ONLY
+    // Effect to set the component as mounted
     useEffect(() => {
         setIsMounted(true);
     }, []);
 
+    // Effect to handle menu events for desktop
     useEffect(() => {
         if (!isMounted) return;
 
@@ -54,25 +85,14 @@ export const Header = () => {
         }
     }, [isMounted]);
 
-    useEffect(() => {
-        const handleScroll = () => {
-          if (window.scrollY > 50) {
-            setScrolled(true);
-          } else {
-            setScrolled(false);
-          }
-        };
     
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
+    //? EFFECTS FOR MOBILE NAVIGATION ONLY
+    // Function to toggle the menu open/close state
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
 
+    // Function to render navigation items
     const renderNavItems = () => (
         <>
             <li
@@ -90,6 +110,7 @@ export const Header = () => {
         </>
     );
 
+    // Function to render dropdown menus
     const renderDropdownMenus = () => (
         <>
             <div
