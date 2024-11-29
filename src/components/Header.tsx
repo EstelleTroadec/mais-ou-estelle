@@ -118,12 +118,12 @@ export const Header = () => {
             >
                 Destinations <AiOutlineDown className="m-1" />
             </li>
-            <li
+{/*             <li
                 id="preparatifs-item"
                 className="group relative mx-4 flex h-full cursor-pointer items-center"
             >
                 Préparatifs <AiOutlineDown className="m-1" />
-            </li>
+            </li> */}
         </>
     );
 
