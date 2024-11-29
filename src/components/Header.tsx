@@ -208,10 +208,10 @@ export const Header = () => {
 
  const renderMobileDestinationMenu = () => (
     <ul className="flex flex-col space-y-4 pl-8 text-left uppercase">
-        <li className="cursor-pointer" onClick={() => toggleContinent('Amérique du Nord')}>
+        <li className="font-semibold" onClick={() => toggleContinent('north-america')}>
             Amérique du Nord
             {visibleContinent === 'north-america' && (
-                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                     <Link href="/countries/etats-unis">
                         <li>Etats-Unis</li>
                     </Link>
@@ -221,42 +221,42 @@ export const Header = () => {
                 </ul>
             )}
         </li>
-        <li className="cursor-pointer" onClick={() => toggleContinent('Amérique Centrale')}>
+        <li className="font-semibold" onClick={() => toggleContinent('central-america')}>
             Amérique Centrale
             {visibleContinent === 'central-america' && (
-                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                     <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                 </ul>
             )}
         </li>
-        <li className="cursor-pointer" onClick={() => toggleContinent('Amérique du Sud')}>
+        <li className="font-semibold" onClick={() => toggleContinent('south-america')}>
             Amérique du Sud
             {visibleContinent === 'south-america' && (
-                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                     <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                 </ul>
             )}
         </li>
-        <li className="cursor-pointer" onClick={() => toggleContinent('Asie')}>
+        <li className="font-semibold" onClick={() => toggleContinent('asia')}>
             Asie
-            {visibleContinent === 'asie' && (
-                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+            {visibleContinent === 'asia' && (
+                <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                     <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                 </ul>
             )}
         </li>
-        <li className="cursor-pointer" onClick={() => toggleContinent('Europe')}>
+        <li className="font-semibold" onClick={() => toggleContinent('europe')}>
             Europe
             {visibleContinent === 'europe' && (
-                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                     <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                 </ul>
             )}
         </li>
-        <li className="cursor-pointer" onClick={() => toggleContinent('Océanie')}>
+        <li className="font-semibold" onClick={() => toggleContinent('oceania')}>
                 Océanie
-                {visibleContinent === 'oceanie' && (
-                    <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                {visibleContinent === 'oceania' && (
+                    <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                         <Link href="/countries/polynesie-francaise">
                             <li>Polynésie Française</li>
                         </Link>
