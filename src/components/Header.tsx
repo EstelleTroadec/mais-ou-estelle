@@ -21,6 +21,10 @@ export const Header = () => {
     //? STATES FOR MOBILE NAVIGATION ONLY
     // State to track if the menu is open
     const [menuOpen, setMenuOpen] = useState(false);
+    // State to track if the mobile destination menu is visible
+    const [mobileDestinationMenuVisible, setMobileDestinationMenuVisible] = useState(false);
+    // State to track which continent's countries are visible
+    const [visibleContinent, setVisibleContinent] = useState<string | null>(null);
 
 
     // Effect to handle scroll events and set the scrolled state
@@ -90,7 +94,20 @@ export const Header = () => {
     // Function to toggle the menu open/close state
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
+        setMobileDestinationMenuVisible(false);
     };
+
+    const toggleMobileContinents = () => {
+        setMobileDestinationMenuVisible(!mobileDestinationMenuVisible);
+    }
+
+    const toggleContinent = (continent: string) => {
+        if (visibleContinent === continent) {
+            setVisibleContinent(null);
+        } else {
+            setVisibleContinent(continent);
+        }
+    }
 
     // Function to render navigation items
     const renderNavItems = () => (
@@ -181,12 +198,72 @@ export const Header = () => {
                     </li>
                 </ul>
             </div>
-            <div id="preparatifs-menu" className={`absolute left-0 top-full z-50 ${preparatifsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}>
+{/*             <div id="preparatifs-menu" className={`absolute left-0 top-full z-50 ${preparatifsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}>
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-4 p-8">
                     <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
                 </ul>
-            </div>
+            </div> */}
         </>
+    );
+
+ const renderMobileDestinationMenu = () => (
+    <ul className="flex flex-col space-y-4 pl-8 text-left uppercase">
+        <li className="cursor-pointer" onClick={() => toggleContinent('Amérique du Nord')}>
+            Amérique du Nord
+            {visibleContinent === 'north-america' && (
+                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                    <Link href="/countries/etats-unis">
+                        <li>Etats-Unis</li>
+                    </Link>
+                    <Link href="/countries/mexique">
+                        <li>Mexique</li>
+                    </Link>
+                </ul>
+            )}
+        </li>
+        <li className="cursor-pointer" onClick={() => toggleContinent('Amérique Centrale')}>
+            Amérique Centrale
+            {visibleContinent === 'central-america' && (
+                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                    <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                </ul>
+            )}
+        </li>
+        <li className="cursor-pointer" onClick={() => toggleContinent('Amérique du Sud')}>
+            Amérique du Sud
+            {visibleContinent === 'south-america' && (
+                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                    <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                </ul>
+            )}
+        </li>
+        <li className="cursor-pointer" onClick={() => toggleContinent('Asie')}>
+            Asie
+            {visibleContinent === 'asie' && (
+                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                    <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                </ul>
+            )}
+        </li>
+        <li className="cursor-pointer" onClick={() => toggleContinent('Europe')}>
+            Europe
+            {visibleContinent === 'europe' && (
+                <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                    <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                </ul>
+            )}
+        </li>
+        <li className="cursor-pointer" onClick={() => toggleContinent('Océanie')}>
+                Océanie
+                {visibleContinent === 'oceanie' && (
+                    <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
+                        <Link href="/countries/polynesie-francaise">
+                            <li>Polynésie Française</li>
+                        </Link>
+                    </ul>
+                )}
+            </li>
+        </ul>
     );
 
     return (
@@ -208,8 +285,11 @@ export const Header = () => {
             </div>
             {menuOpen && (
                 <nav className="bg-footerBg text-background md:hidden">
-                    <ul className="flex flex-col items-center space-y-4 p-4 uppercase">
-                        {renderNavItems()}
+                    <ul className="flex flex-col space-y-4 p-4 text-left uppercase">
+                        <li className="flex cursor-pointer flex-row" onClick={toggleMobileContinents}>
+                            Destinations <AiOutlineDown className="m-1" />
+                        </li>
+                        {mobileDestinationMenuVisible && renderMobileDestinationMenu()}
                     </ul>
                 </nav>
             )}
