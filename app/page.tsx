@@ -35,8 +35,8 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      <div className="mx-2 space-y-4 md:mx-auto md:w-4/5 lg:mx-auto">
-        <h1 className="ml-1 mt-12 font-poppins text-xl font-semibold text-title md:ml-3 md:text-4xl">Mes derniers articles</h1>
+      <div className="m-auto mb-20 mt-8 flex w-4/5 flex-col md:w-[90%] lg:w-3/4 lg:flex-col">
+        <h1 className="mb-4 ml-1 mt-12 font-poppins text-lg font-semibold text-title md:ml-3 md:text-4xl">Mes derniers articles</h1>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:justify-center">
           {visiblePosts.map((post) => (
             <Card key={post.slug} className="flex flex-col gap-2">
@@ -53,7 +53,7 @@ export default async function Home() {
                   </div>
                 </div>
                 <Link href={`/posts/${post.slug}`}>
-                  <CardTitle className="text-xl text-footerBg md:text-4xl">
+                  <CardTitle className="text-xl text-footerBg lg:text-4xl">
                     {post.title}
                   </CardTitle>
                 </Link>
