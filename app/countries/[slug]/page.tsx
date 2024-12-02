@@ -45,37 +45,45 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
   const countryPosts = await getCountryPosts((await props.params).slug);
 
   return (
-    <div className="mx-auto mt-24 w-3/4">
-      <h1 className="my-40 text-center font-poppins text-[4rem] font-semibold uppercase">{countryPage.name}</h1>
-      <div className="mb-20 mt-8 flex flex-col lg:flex-row">
-        <div className="mt-6 lg:w-1/3">
-          <div className="font-courrier mb-2 uppercase">
-            <h2 className="font-courrier text-[1rem]">PAYS</h2>
-            <p className="font-semibold">{countryPage.name}</p>
+    <div className="mx-auto">
+      <div
+        className="relative w-full bg-cover bg-center py-72 text-center font-chelsea font-semibold uppercase"
+        style={{ backgroundImage: `url(${countryPage.mainImage})` }}
+      >
+        <h1 className="relative z-10 text-[2.5rem] text-background md:text-[5rem]">{countryPage.name}</h1>
+        {/* Optionnel : pour ajouter un overlay sombre */}
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+      </div>
+      <div className="m-auto mb-20 mt-8 flex w-3/4 flex-col lg:flex-row">
+        <div className="mb-20 mt-6 lg:w-1/3">
+          <div className="font-courrier mb-2 text-center uppercase lg:text-left">
+            <h2 className="text-[1rem]">PAYS</h2>
+            <p className="font-bold">{countryPage.name}</p>
           </div>
-          <div className="font-courrier mb-2 uppercase">
-            <h2 className="font-courrier text-[1rem]">CONTINENT</h2>
-            <p className="font-semibold">{countryPage.continent}</p>
+          <div className="font-courrier mb-2 text-center uppercase lg:text-left">
+            <h2 className="text-[1rem]">CONTINENT</h2>
+            <p className="font-bold">{countryPage.continent}</p>
           </div>
-          <div className="font-courrier mb-2 uppercase">
-            <h2 className="font-courrier text-[1rem]">CAPITALE</h2>
-            <p className="font-semibold">{countryPage.capital}</p>
+          <div className="font-courrier mb-2 text-center uppercase lg:text-left">
+            <h2 className="text-[1rem]">CAPITALE</h2>
+            <p className="font-bold">{countryPage.capital}</p>
           </div>
-          <div className="font-courrier mb-2 uppercase">
-            <h2 className="font-courrier text-[1rem]">DEVISE</h2>
-            <p className="font-semibold">{countryPage.money}</p>
+          <div className="font-courrier mb-2 text-center uppercase lg:text-left">
+            <h2 className="text-[1rem]">DEVISE</h2>
+            <p className="font-bold">{countryPage.money}</p>
           </div>
-          <div className="font-courrier mb-2 uppercase">
-            <h2 className="font-courrier text-[1rem]">LANGUE(S)</h2>
-            <p className="font-semibold">{countryPage.language}</p>
+          <div className="font-courrier mb-2 text-center uppercase lg:text-left">
+            <h2 className="text-[1rem]">LANGUE(S)</h2>
+            <p className="font-bold">{countryPage.language}</p>
           </div>
         </div>
         <div className="prose prose-sm mt-8 lg:prose-lg lg:mt-0 lg:w-2/3 lg:pl-8">
           <Mdx>{countryPage.content}</Mdx>
         </div>
       </div>
-      <div className="m-auto space-y-4">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className="mx-2 space-y-4 md:mx-auto md:w-4/5 lg:mx-auto">
+      <h1 className="ml-1 mt-12 font-poppins text-xl font-semibold text-title md:ml-3 md:text-3xl">Tous mes articles sur {countryPage.article} {countryPage.name} </h1>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:justify-center">
           {countryPosts?.posts?.map((post) => (
               <Card key={post.slug} className="flex flex-col gap-2">
                 <CardHeader>
