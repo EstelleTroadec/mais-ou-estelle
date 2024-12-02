@@ -18,6 +18,7 @@ const countryPagesSchema = z.object({
   capital: z.string(),
   money: z.string(),
   language: z.string(),
+  plug: z.string(),
   published: z.boolean().optional().default(false),
 });
 
