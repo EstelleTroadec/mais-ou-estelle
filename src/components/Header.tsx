@@ -227,9 +227,11 @@ export const Header = () => {
     const renderMobileNavItemMenu = () => (
         <ul className="flex flex-col space-y-4 pl-8 text-left uppercase">
             <li className="font-semibold" onClick={() => toggleContinent('north-america')}>
-                Amérique du Nord
+                <div
+                className="group relative mx-4 flex h-full cursor-pointer items-center"> 
+                Amérique du Nord <AiOutlineDown className="m-1" /></div>
                 {visibleContinent === 'north-america' && (
-                    <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
+                    <ul className="relative flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                         <Link href="/countries/etats-unis" onClick={handleLinkClick}>
                             <li>Etats-Unis</li>
                         </Link>
@@ -240,7 +242,8 @@ export const Header = () => {
                 )}
             </li>
             <li className="font-semibold" onClick={() => toggleContinent('central-america')}>
-                Amérique Centrale
+                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
+                    Amérique Centrale <AiOutlineDown className="m-1" /></div>
                 {visibleContinent === 'central-america' && (
                     <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                         <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
@@ -248,7 +251,8 @@ export const Header = () => {
                 )}
             </li>
             <li className="font-semibold" onClick={() => toggleContinent('south-america')}>
-                Amérique du Sud
+                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
+                Amérique du Sud <AiOutlineDown className="m-1" /></div>
                 {visibleContinent === 'south-america' && (
                     <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                         <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
@@ -256,7 +260,8 @@ export const Header = () => {
                 )}
             </li>
             <li className="font-semibold" onClick={() => toggleContinent('asia')}>
-                Asie
+                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
+                    Asie <AiOutlineDown className="m-1" /></div>
                 {visibleContinent === 'asia' && (
                     <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                         <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
@@ -264,7 +269,8 @@ export const Header = () => {
                 )}
             </li>
             <li className="font-semibold" onClick={() => toggleContinent('europe')}>
-                Europe
+                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
+                    Europe <AiOutlineDown className="m-1" /></div>
                 {visibleContinent === 'europe' && (
                     <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                         <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
@@ -272,11 +278,12 @@ export const Header = () => {
                 )}
             </li>
             <li className="font-semibold" onClick={() => toggleContinent('oceania')}>
-                Océanie
+                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
+                    Océanie <AiOutlineDown className="m-1" /></div>
                 {visibleContinent === 'oceania' && (
                     <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
                         <Link href="/countries/polynesie-francaise" onClick={handleLinkClick}>
-                            <li>Polynésie Française</li>
+                            <li >Polynésie Française</li>
                         </Link>
                     </ul>
                 )}
