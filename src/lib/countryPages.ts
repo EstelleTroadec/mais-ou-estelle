@@ -12,6 +12,7 @@ const countryPagesDirectory = path.join(process.cwd(), "content/countries");
 // validate the front matter data
 const countryPagesSchema = z.object({
   mainImage: z.string(),
+  article: z.string(),
   name: z.string(),
   continent: z.string(),
   capital: z.string(),

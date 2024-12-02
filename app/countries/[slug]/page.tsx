@@ -82,7 +82,7 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
         </div>
       </div>
       <div className="mx-2 space-y-4 md:mx-auto md:w-4/5 lg:mx-auto">
-      <h1 className="ml-1 mt-12 font-poppins text-xl font-semibold text-title md:ml-3 md:text-4xl">Les articles</h1>
+      <h1 className="ml-1 mt-12 font-poppins text-xl font-semibold text-title md:ml-3 md:text-3xl">Tous mes articles sur {countryPage.article} {countryPage.name} </h1>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:justify-center">
           {countryPosts?.posts?.map((post) => (
               <Card key={post.slug} className="flex flex-col gap-2">
