@@ -27,11 +27,11 @@ export default async function Home() {
     <div className="flex flex-col">
       <div className="bg-homePage flex h-[40rem] w-full items-center">
         <div className="m-auto mb-0 flex h-auto w-full bg-secondaryBgTransparent font-chelsea">
-          <div className="m-auto flex w-72 items-center">
-            <h1 className="ml-6 w-[70%] text-left text-[3rem] font-semibold leading-[3rem] text-footerBg">
+          <div className="mx-auto my-2 flex w-[17rem] items-center">
+            <h1 className="w-full text-left text-[3rem] font-semibold leading-[3rem] text-footerBg">
                 Mais où Est(-)elle
             </h1>
-            <p className="text-[7rem] text-footerBg">?</p>
+            <p className="text-[7rem] leading-[3rem] text-footerBg">?</p>
           </div>
         </div>
       </div>

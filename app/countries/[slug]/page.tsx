@@ -45,7 +45,7 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
   const countryPosts = await getCountryPosts((await props.params).slug);
 
   return (
-    <div className="mx-auto">
+    <div className="mx-0">
       <div
         className="relative w-full bg-cover bg-center py-72 text-center font-chelsea font-semibold uppercase"
         style={{ backgroundImage: `url(${countryPage.mainImage})` }}

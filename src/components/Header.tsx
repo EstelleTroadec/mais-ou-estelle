@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import "../../styles/globals.css";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import { useEffect, useState } from 'react';
+import { continentCountryMap } from '@/lib/countryList';
 
 export const Header = () => {
     // State to track if the page is scrolled
@@ -153,67 +154,21 @@ export const Header = () => {
                 className={`absolute left-0 top-full z-50 ${destinationsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}
             >
                 <ul className="grid grid-cols-2 gap-x-8 gap-y-4 p-8">
-                    <li className="px-4 py-2">
-                        <h4 className="text-lg uppercase ">Amérique du Nord</h4>
-                        <div className="mt-2">
-                            <ul className="inline-flex space-x-4 font-poppins text-sm">
-                                <Link href="/countries/etats-unis" onClick={handleLinkClick}>
-                                    <li>Etats-Unis</li>
-                                </Link>
-                                <Link href="/countries/mexique" onClick={handleLinkClick}>
-                                    <li>Mexique</li>
-                                </Link>
-                            </ul>
-                        </div>
-                        <hr className="my-2" />
-                    </li>
-                    <li className="px-4 py-2">
-                        <h4 className="text-lg uppercase">Amérique Centrale</h4>
-                        <div className="mt-2">
-                            <ul className="inline-flex space-x-4 font-poppins text-sm">
-                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                            </ul>
-                        </div>
-                        <hr className="my-2" />
-                    </li>
-                    <li className="px-4 py-2">
-                        <h4 className="text-lg uppercase">Amérique du Sud</h4>
-                        <div className="mt-2">
-                            <ul className="inline-flex space-x-4 font-poppins text-sm">
-                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                            </ul>
-                        </div>
-                        <hr className="my-2" />
-                    </li>
-                    <li className="px-4 py-2">
-                        <h4 className="text-lg uppercase">Asie</h4>
-                        <div className="mt-2">
-                            <ul className="inline-flex space-x-4 font-poppins text-sm">
-                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                            </ul>
-                        </div>
-                        <hr className="my-2" />
-                    </li>
-                    <li className="px-4 py-2">
-                        <h4 className="text-lg uppercase">Europe</h4>
-                        <div className="mt-2">
-                            <ul className="inline-flex space-x-4 font-poppins text-sm">
-                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                            </ul>
-                        </div>
-                        <hr className="my-2" />
-                    </li>
-                    <li className="px-4 py-2">
-                        <h4 className="text-lg uppercase">Océanie</h4>
-                        <div className="mt-2">
-                            <ul className="inline-flex space-x-4 font-poppins text-sm">
-                                <Link href="/countries/polynesie-francaise" onClick={handleLinkClick}>
-                                    <li>Polynésie Française</li>
-                                </Link>
-                            </ul>
-                        </div>
-                        <hr className="my-2" />
-                    </li>
+                    {Object.entries(continentCountryMap).map(([continent, countries]) => (
+                        <li key={continent} className="px-4 py-2">
+                            <h4 className="text-lg uppercase">{continent}</h4>
+                            <div className="mt-2">
+                                <ul className="inline-flex space-x-4 font-poppins text-sm">
+                                    {countries.map((country) => (
+                                        <Link key={country.name} href={country.link} onClick={handleLinkClick}>
+                                            <li>{country.name}</li>
+                                        </Link>
+                                    ))}
+                                </ul>
+                            </div>
+                            <hr className="my-2" />
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div id="preparations-menu" className={`absolute left-0 top-full z-50 ${preparationsMenuVisible ? 'block' : 'hidden'} w-screen bg-footerBg px-8 font-semibold uppercase text-background`}>
@@ -226,79 +181,33 @@ export const Header = () => {
 
     const renderMobileNavItemMenu = () => (
         <ul className="flex flex-col space-y-4 pl-8 text-left uppercase">
-            <li className="font-semibold" onClick={() => toggleContinent('north-america')}>
-                <div
-                className="group relative mx-4 flex h-full cursor-pointer items-center"> 
-                Amérique du Nord <AiOutlineDown className="m-1" /></div>
-                {visibleContinent === 'north-america' && (
-                    <ul className="relative flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
-                        <Link href="/countries/etats-unis" onClick={handleLinkClick}>
-                            <li>Etats-Unis</li>
-                        </Link>
-                        <Link href="/countries/mexique" onClick={handleLinkClick}>
-                            <li>Mexique</li>
-                        </Link>
-                    </ul>
-                )}
-            </li>
-            <li className="font-semibold" onClick={() => toggleContinent('central-america')}>
-                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
-                    Amérique Centrale <AiOutlineDown className="m-1" /></div>
-                {visibleContinent === 'central-america' && (
-                    <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
-                        <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                    </ul>
-                )}
-            </li>
-            <li className="font-semibold" onClick={() => toggleContinent('south-america')}>
-                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
-                Amérique du Sud <AiOutlineDown className="m-1" /></div>
-                {visibleContinent === 'south-america' && (
-                    <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
-                        <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                    </ul>
-                )}
-            </li>
-            <li className="font-semibold" onClick={() => toggleContinent('asia')}>
-                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
-                    Asie <AiOutlineDown className="m-1" /></div>
-                {visibleContinent === 'asia' && (
-                    <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
-                        <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                    </ul>
-                )}
-            </li>
-            <li className="font-semibold" onClick={() => toggleContinent('europe')}>
-                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
-                    Europe <AiOutlineDown className="m-1" /></div>
-                {visibleContinent === 'europe' && (
-                    <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
-                        <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
-                    </ul>
-                )}
-            </li>
-            <li className="font-semibold" onClick={() => toggleContinent('oceania')}>
-                <div className="group relative mx-4 flex h-full cursor-pointer items-center">
-                    Océanie <AiOutlineDown className="m-1" /></div>
-                {visibleContinent === 'oceania' && (
-                    <ul className="flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
-                        <Link href="/countries/polynesie-francaise" onClick={handleLinkClick}>
-                            <li >Polynésie Française</li>
-                        </Link>
-                    </ul>
-                )}
-            </li>
+            {Object.entries(continentCountryMap).map(([continent, countries]) => (
+                <li key={continent} className="font-semibold" onClick={() => toggleContinent(continent)}>
+                    <div className="group relative mx-4 flex h-full cursor-pointer items-center">
+                        {continent} <AiOutlineDown className="m-1" />
+                    </div>
+                    {visibleContinent === continent && (
+                        <ul className="relative flex flex-col space-y-4 p-4 pl-8 font-light uppercase">
+                            {countries.map((country) => (
+                                <Link key={country.name} href={country.link} onClick={handleLinkClick}>
+                                    <li>{country.name}</li>
+                                </Link>
+                            ))}
+                        </ul>
+                    )}
+                </li>
+            ))}
         </ul>
     );
 
     return (
-        <header className={`fixed mb-1 h-24 w-full pt-0.5 font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'} z-50`}>
+        <header className={`fixed mb-1 h-24 w-full pt-0.5 font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background ' : 'bg-transparent'} z-50`}>
             <div className="container relative m-auto flex h-full w-10/12 items-center justify-between md:items-start md:justify-start">
                 <Link href="/" className="flex h-full" onClick={handleLinkClick}>
                     <img className="my-auto mr-2 w-20" src="/logo.png" alt="logo" />
                 </Link>
                 <nav className="my-auto ml-10 hidden h-full space-x-8 md:flex">
-                    <ul className="flex h-full items-center space-x-8 uppercase text-footerBg">
+                    <ul className={`flex h-full items-center space-x-8 uppercase ${scrolled ? 'text-footerBg' : 'font-semibold text-background'}`}>
                         {renderNavItems()}
                     </ul>
                 </nav>
