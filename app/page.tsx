@@ -25,7 +25,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col">
-      <div className="bg-homePage flex h-[32rem] w-full items-center">
+      <div className="bg-homePage flex h-[40rem] w-full items-center">
         <div className="m-auto mb-0 flex h-auto w-full bg-secondaryBgTransparent font-chelsea">
           <div className="mx-auto my-2 flex w-[17rem] items-center">
             <h1 className="w-full text-left text-[3rem] font-semibold leading-[3rem] text-footerBg">
