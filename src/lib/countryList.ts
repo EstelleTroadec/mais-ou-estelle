@@ -2,7 +2,7 @@ const continentCountryMap = {
   "Amérique du Nord": [
     { name: "États-Unis", link: "/countries/etats-unis" },
     { name: "Mexique", link: "/countries/mexique" },
-/*     { name: "Canada", link: "/countries/canada" } */
+    { name: "Canada", link: "/countries/canada" }
   ],
 /*   "Amérique du Sud": [
     { name: "Brésil", link: "/countries/bresil" },
