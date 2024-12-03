@@ -201,13 +201,13 @@ export const Header = () => {
     );
 
     return (
-        <header className={`fixed mb-1 h-24 w-full pt-0.5 font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background' : 'bg-transparent'} z-50`}>
+        <header className={`fixed mb-1 h-24 w-full pt-0.5 font-chelsea transition-colors duration-200 ${scrolled ? 'bg-background ' : 'bg-transparent'} z-50`}>
             <div className="container relative m-auto flex h-full w-10/12 items-center justify-between md:items-start md:justify-start">
                 <Link href="/" className="flex h-full" onClick={handleLinkClick}>
                     <img className="my-auto mr-2 w-20" src="/logo.png" alt="logo" />
                 </Link>
                 <nav className="my-auto ml-10 hidden h-full space-x-8 md:flex">
-                    <ul className="flex h-full items-center space-x-8 uppercase text-footerBg">
+                    <ul className={`flex h-full items-center space-x-8 uppercase ${scrolled ? 'text-footerBg' : 'font-semibold text-background'}`}>
                         {renderNavItems()}
                     </ul>
                 </nav>
