@@ -44,6 +44,9 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
 
   const countryPosts = await getCountryPosts((await props.params).slug);
 
+  // Sort posts from most recent to oldest
+  const sortedPosts = countryPosts?.posts?.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
   return (
     <div className="mx-0">
       <div
@@ -92,7 +95,7 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
       <div className="m-auto w-4/5 space-y-4 md:mx-auto md:w-[90%] lg:mx-auto">
         <h1 className="ml-1 mt-12 font-poppins text-xl font-semibold text-title md:ml-3 md:text-3xl">Tous mes articles sur {countryPage.article} {countryPage.name} </h1>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:justify-center">
-          {countryPosts?.posts?.map((post) => (
+          {sortedPosts?.map((post) => (
             <Card key={post.slug} className="flex flex-col gap-2">
               <CardHeader>
                   <CardImage className="h-80" src={post.mainImage} alt={post.title} />
