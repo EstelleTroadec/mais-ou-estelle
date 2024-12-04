@@ -67,7 +67,7 @@ const CardImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <img
     ref={ref}
-    className={cn("w-full h-auto", className)}
+    className={cn("w-full h-40 lg:h-80", className)}
     {...props}
   />
 ));

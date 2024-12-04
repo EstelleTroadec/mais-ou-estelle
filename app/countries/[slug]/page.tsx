@@ -98,7 +98,7 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
           {sortedPosts?.map((post) => (
             <Card key={post.slug} className="flex flex-col gap-2">
               <CardHeader>
-                  <CardImage className="h-80" src={post.mainImage} alt={post.title} />
+                  <CardImage src={post.mainImage} alt={post.title} />
                   <div className="items-center gap-2">
                   <div className="my-4 flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="mr-2.5 mt-0.5 size-3.5 text-muted-foreground">
