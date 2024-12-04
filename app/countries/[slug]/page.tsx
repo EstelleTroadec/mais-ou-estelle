@@ -76,7 +76,7 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
             <p className="font-bold">{countryPage.money}</p>
           </div>
           <div className="font-courrier mb-2 text-center uppercase lg:text-left">
-            <h2 className="text-[1rem]">LANGUE(S)</h2>
+            <h2 className="text-[1rem]">LANGUE(S) OFFICIELLE(S)</h2>
             <p className="font-bold">{countryPage.language}</p>
           </div>
           <div className="font-courrier mb-2 text-center uppercase lg:text-left">
