@@ -4,6 +4,9 @@ const continentCountryMap = {
     { name: "Mexique", link: "/countries/mexique" },
     { name: "Canada", link: "/countries/canada" }
   ],
+  "Amérique Centrale": [
+    { name: "Costa Rica", link: "/countries/costa-rica" }
+  ],
   "Amérique du Sud": [
     /* { name: "Brésil", link: "/countries/bresil" }, */
     { name: "Colombie", link: "/countries/colombie" }
