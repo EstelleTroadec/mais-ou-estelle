@@ -54,7 +54,6 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
         style={{ backgroundImage: `url(${countryPage.mainImage})` }}
       >
         <h1 className="relative z-10 text-[2.5rem] text-background md:text-[5rem]">{countryPage.name}</h1>
-        {/* Optionnel : pour ajouter un overlay sombre */}
         <div className="absolute inset-0 bg-black opacity-50"></div>
       </div>
       <div className="mx-auto my-10 flex flex-col lg:my-20 lg:w-3/4 lg:flex-row">
@@ -88,8 +87,24 @@ export default async function CountryPage(props: { params: Promise<{ slug: strin
             <p className="font-bold">{countryPage.bestPeriod}</p>
           </div>
         </div>
-        <div className="prose m-auto w-4/5 lg:prose-lg md:w-[90%] lg:mt-0 lg:w-2/3 lg:pl-8">
+        <div className="prose relative m-auto w-4/5 lg:prose-lg md:max-h-[27rem] md:w-[90%] md:overflow-y-auto lg:mt-0 lg:w-2/3 lg:pl-8">
           <Mdx>{countryPage.content}</Mdx>
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="h-6 w-6 animate-bounce text-gray-500"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 12.75l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </div>
         </div>
       </div>
       <div className="m-auto w-4/5 space-y-4 md:mx-auto md:w-[90%] lg:mx-auto">
