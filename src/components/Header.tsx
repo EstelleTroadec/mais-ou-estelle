@@ -23,9 +23,11 @@ export const Header = () => {
     // State to track if the menu is open
     const [menuOpen, setMenuOpen] = useState(false);
     // State to track if the mobile destination menu is visible
-    const [mobileNavItemMenuVisible, setMobileNavItemMenuVisible] = useState(false);
+    const [mobileDestinationMenuVisible, setMobileDestinationMenuVisible] = useState(false);
     // State to track which continent's countries are visible
     const [visibleContinent, setVisibleContinent] = useState<string | null>(null);
+    // State to track if the mobile preparations menu is visible
+    const [mobilePreparationsMenuVisible, setMobilePreparationsMenuVisible] = useState(false);
 
     const pathname = usePathname();
 
@@ -49,7 +51,8 @@ export const Header = () => {
     useEffect(() => {
         const handleRouteChange = () => {
             setMenuOpen(false);
-            setMobileNavItemMenuVisible(false);
+            setMobileDestinationMenuVisible(false);
+            setMobilePreparationsMenuVisible(false);
             setDestinationsMenuVisible(false);
             setPreparationsMenuVisible(false);
         };
@@ -107,11 +110,12 @@ export const Header = () => {
     // Function to toggle the menu open/close state
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
-        setMobileNavItemMenuVisible(false);
+        setMobileDestinationMenuVisible(false);
+        setMobilePreparationsMenuVisible(false);
     };
 
     const toggleMobileContinents = () => {
-        setMobileNavItemMenuVisible(!mobileNavItemMenuVisible);
+        setMobileDestinationMenuVisible(!mobileDestinationMenuVisible);
     }
 
     const toggleContinent = (continent: string) => {
@@ -122,10 +126,15 @@ export const Header = () => {
         }
     }
 
+    const toggleMobilePreparations = () => {
+        setMobilePreparationsMenuVisible(!mobilePreparationsMenuVisible);
+    }
+
     // Function to handle link click and close the menu
     const handleLinkClick = () => {
         setMenuOpen(false);
-        setMobileNavItemMenuVisible(false);
+        setMobileDestinationMenuVisible(false);
+        setMobilePreparationsMenuVisible(false);
     }
 
     // Function to render navigation items
@@ -223,7 +232,15 @@ export const Header = () => {
                         <li className="flex cursor-pointer flex-row" onClick={toggleMobileContinents}>
                             Destinations <AiOutlineDown className="m-1" />
                         </li>
-                        {mobileNavItemMenuVisible && renderMobileNavItemMenu()}
+                        {mobileDestinationMenuVisible && renderMobileNavItemMenu()}
+                        <li className="flex cursor-pointer flex-row" onClick={toggleMobilePreparations}>
+                            Préparatifs <AiOutlineDown className="m-1" />
+                        </li>
+                        {mobilePreparationsMenuVisible && (
+                            <ul className="flex flex-col space-y-4 pl-8 text-left uppercase">
+                                <li className="italic">Un peu de patience, ça arrive... ⌛️</li>
+                            </ul>
+                        )}
                     </ul>
                 </nav>
             )}
